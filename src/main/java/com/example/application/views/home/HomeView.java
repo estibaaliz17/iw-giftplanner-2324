@@ -4,6 +4,7 @@ import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H3;
@@ -64,6 +65,11 @@ public class HomeView extends Composite<VerticalLayout> {
         buttonPrimary.setText("Regístrate Ahora");
         buttonPrimary.setWidth("min-content");
         buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        // Crear el enlace a la vista de registro
+        Anchor registerLink = new Anchor("register", buttonPrimary);
+        registerLink.getElement().setAttribute("router-ignore", "");
+
         getContent().add(h1);
         getContent().add(h3);
         getContent().add(hr);
@@ -75,6 +81,6 @@ public class HomeView extends Composite<VerticalLayout> {
         getContent().add(textLarge3);
         getContent().add(h23);
         getContent().add(textLarge4);
-        getContent().add(buttonPrimary);
+        getContent().add(registerLink); // Agregar el enlace en lugar del botón directamente
     }
 }
