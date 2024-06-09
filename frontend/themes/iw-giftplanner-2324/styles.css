@@ -1,0 +1,11 @@
+@import url('./main-layout.css');
+@import url('./views/home-view.css');
+@import url('./views/allegados-view.css');
+@import url('./views/listas-regalos-view.css');
+@import url('./views/detalle-lista-regalos-view.css');    html {
+      --lumo-primary-color: hsla(337, 90%, 52%, 0.48);
+      --lumo-primary-color-50pct: hsla(337, 90%, 52%, 0.5);
+      --lumo-primary-color-10pct: hsla(337, 90%, 52%, 0.1);
+      --lumo-primary-text-color: hsla(337, 90%, 52%, 0.48);
+
+    }
