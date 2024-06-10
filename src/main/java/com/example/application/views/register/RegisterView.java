@@ -1,4 +1,4 @@
-package com.example.application.views;
+package com.example.application.views.register;
 
 import com.example.application.data.UserRepository;
 import com.example.application.data.User;
