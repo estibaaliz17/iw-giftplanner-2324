@@ -1,6 +1,5 @@
 package com.example.application.data;
 
-import com.example.application.data.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
