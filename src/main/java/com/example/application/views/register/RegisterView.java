@@ -1,8 +1,6 @@
-package com.example.application.views;
+package com.example.application.views.register;
 
-import com.example.application.data.UserRepository;
-import com.example.application.data.User;
-import com.example.application.data.UserRepository;
+import com.example.application.services.UserService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -10,14 +8,16 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Route("register")
 public class RegisterView extends VerticalLayout {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public RegisterView(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @Autowired
+    public RegisterView(UserService userService) {
+        this.userService = userService;
 
         TextField usernameField = new TextField("Username");
         TextField nameField = new TextField("Name");
@@ -40,21 +40,13 @@ public class RegisterView extends VerticalLayout {
             }
 
             // Verificar si el usuario ya existe
-            if (userRepository.findByUsername(username) != null) {
+            if (userService.getByUsername(username).isPresent()) {
                 Notification.show("Username already exists.");
                 return;
             }
 
             // Crear y guardar el nuevo usuario
-            User newUser = new User();
-            newUser.setUsername(username);
-            newUser.setName(name);
-            newUser.setSurname(surname);
-            newUser.setHashedPassword(password);
-            newUser.setMail(email);
-            newUser.setPhone(phone);
-
-            userRepository.save(newUser);
+            userService.registerUser(username, name, surname, password, email, phone);
             Notification.show("User registered successfully!");
 
             // Limpiar los campos
