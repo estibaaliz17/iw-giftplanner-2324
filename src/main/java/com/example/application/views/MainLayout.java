@@ -101,8 +101,7 @@ public class MainLayout extends AppLayout {
 
         }
         if (accessChecker.hasAccess(DetalleListaRegalosView.class)) {
-            nav.addItem(new SideNavItem("Detalle Lista Regalos", DetalleListaRegalosView.class,
-                    LineAwesomeIcon.GIFT_SOLID.create()));
+            nav.addItem(new SideNavItem("Detalle Lista Regalos", DetalleListaRegalosView.class, LineAwesomeIcon.GIFT_SOLID.create()));
 
         }
         if (accessChecker.hasAccess(RegaloView.class)) {
@@ -121,9 +120,6 @@ public class MainLayout extends AppLayout {
             User user = maybeUser.get();
 
             Avatar avatar = new Avatar(user.getName());
-            StreamResource resource = new StreamResource("profile-pic",
-                    () -> new ByteArrayInputStream(user.getProfilePicture()));
-            avatar.setImageResource(resource);
             avatar.setThemeName("xsmall");
             avatar.getElement().setAttribute("tabindex", "-1");
 

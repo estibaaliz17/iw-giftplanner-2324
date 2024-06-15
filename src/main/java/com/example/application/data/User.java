@@ -2,30 +2,28 @@ package com.example.application.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
-import java.util.Set;
+import java.util.Date;
 
 @Entity
-@Table(name = "application_user")
+@Table(name = "user")
 public class User extends AbstractEntity {
 
     private String username;
     private String name;
-    @JsonIgnore
-    private String hashedPassword;
-    @Enumerated(EnumType.STRING)
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    private String surnames; // Apellidos
+    private String password;
+    private String email;
+    private String tel; // Teléfono
+    private Date birthday; // Fecha de nacimiento
+
     @Lob
     @Column(length = 1000000)
-    private byte[] profilePicture;
+
+    // Getters y Setters
 
     public String getUsername() {
         return username;
@@ -43,28 +41,43 @@ public class User extends AbstractEntity {
         this.name = name;
     }
 
-    public String getHashedPassword() {
-        return hashedPassword;
+    public String getSurnames() {
+        return surnames;
     }
 
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
+    public void setSurnames(String surnames) {
+        this.surnames = surnames;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getPassword() {
+        return password;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public byte[] getProfilePicture() {
-        return profilePicture;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProfilePicture(byte[] profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 }
